@@ -1,0 +1,1 @@
+to make this script work, fill first two lines of code in spoj_scrap.py and run it
