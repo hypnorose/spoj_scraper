@@ -7,8 +7,12 @@ import mechanize
 from bs4 import BeautifulSoup
 import urllib
 import http.cookiejar 
+import os
 
-
+current_directory = os.getcwd()
+final_directory = os.path.join(current_directory, r'output')
+if not os.path.exists(final_directory):
+   os.makedirs(final_directory)
 
 cj = http.cookiejar.CookieJar()
 br = mechanize.Browser()
@@ -20,7 +24,7 @@ br.form['login_user'] = username
 br.form['password'] = password
 br.submit()
 res =br.response().read()
-br.open("https://pl.spoj.com/users/"+username"/")
+br.open("https://pl.spoj.com/users/"+username+"/")
 res =br.response().read()
 
 soup = BeautifulSoup(res)
